@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes, Navigate, useMatches } from "react-router-dom";
 import Editar from './Rutas/editarPublicacion/Editar'
+import MascotasRegister from './Rutas/registerMascota'
 import Login from './Rutas/login';
 import Register from './Rutas/register'
 import Header from './Rutas/inicio';
@@ -64,6 +65,12 @@ const Root=() =>{
             <Register />
           </NoSeeAuth>
         }/>
+
+        <Route path="/registerMascota" element={
+          <AuthRequired>
+           <MascotasRegister/>
+          </AuthRequired>
+        } />
 
         <Route path="/edit/:id" element={
           <AuthRequired>

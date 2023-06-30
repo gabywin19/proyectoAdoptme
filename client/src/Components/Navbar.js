@@ -55,6 +55,11 @@ const Navbar = () => {
               </Button>
             </Grid>
             <Grid textAlign='center' xs={12}>
+              <Button onClick={handleOpen} to={'/registerMascota'} component={NavLink} color="inherit" >
+                Registrar Mascota
+              </Button>
+            </Grid>
+            <Grid textAlign='center' xs={12}>
               <CerrarSesion close={handleOpen} />
             </Grid>
           </Grid>
