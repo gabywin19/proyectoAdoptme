@@ -1,29 +1,28 @@
-const express= require("express");
-const app= express();
-const port=7070;
-require('./Server/Config/mongoose.config');
-const cookieParser = require('cookie-parser');
-app.use(cookieParser());
-require('dotenv').config()
-console.log(process.env.SECRET_KEY)
-const cors = require('cors')
-const path = require('path')
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
 
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    credentials: true
-};
+require("./Server/Config/mongoose.config");
 
-app.use(cors(corsOptions))
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-app.use('/', express.static(path.join(__dirname, 'server/uploads')))
+// body parser configuration
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const routes = require('./Server/Routes/usuario.routes');
- require('./Server/Routes/publicaciones.routes')(app)
- require('./Server/Routes/comentarios.routes')(app)
- 
-routes(app);
+require("./Server/Routes/all.routes")(app);
 
-app.listen(port, ()=>console.log('Server ON'));
+app.listen(8080, () => {
+  console.log("Listening at Port 8080");
+});
