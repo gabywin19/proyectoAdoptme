@@ -1,9 +1,20 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const path = require('path')
 
 require("./Server/Config/mongoose.config");
 
+const cors = require('cors')
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true
+};
+
+app.use(cors(corsOptions))
+
+/*
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -16,10 +27,12 @@ app.use((req, res, next) => {
   );
   next();
 });
+*/
 
 // body parser configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/', express.static(path.join(__dirname, 'server/uploads/imagen')))
 
 require("./Server/Routes/all.routes")(app);
 

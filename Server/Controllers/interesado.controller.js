@@ -16,7 +16,7 @@ module.exports.createInteresado = (request, response) => {
     gastosVeterinario,
     visitasSeguimiento,
     pasearAdoptado,
-    user_id,
+    userCreate,
   } = request.body;
 
   console.log(request.body);
@@ -36,7 +36,7 @@ module.exports.createInteresado = (request, response) => {
     gastosVeterinario,
     visitasSeguimiento,
     pasearAdoptado,
-    user_id,
+    userCreate,
   })
     .then((interesado) => response.json(interesado))
     .catch((err) => {

@@ -5,6 +5,7 @@ const { User } = require("../Models/user.model");
 
 module.exports.register = (request, response) => {
   // hash the password
+  console.log(request.body);
   bcrypt
     .hash(request.body.password, 10)
     .then((hashedPassword) => {

@@ -1,7 +1,7 @@
 const { Adoptame} = require("../Models/adoptame.model");
 
 module.exports.createAdoptame = (request, response) => {
-    const { apodo, caracteristicas, edad, descripcionMascota, tipoAnimal, datosMedicos, raza, imagen1, imagen2, imagen3, imagen4, imagen5, telefonoContacto, emailContacto, nombreContacto} =
+    const { apodo, caracteristicas, edad, descripcionMascota, tipoAnimal, datosMedicos, raza, imagen1, imagen2, imagen3, imagen4, imagen5, telefonoContacto, emailContacto, nombreContacto, userCreate} =
         request.body;
 
     console.log(request.body);
@@ -22,6 +22,7 @@ module.exports.createAdoptame = (request, response) => {
         telefonoContacto,
         emailContacto,
         nombreContacto,
+        userCreate,
 
     })
         .then((adoptame) => response.json(adoptame))

@@ -25,7 +25,8 @@ const Index = () => {
     <Container component='main' sx={{pb: 6}}>
       <Grid container justifyContent="center" spacing={2}>
         <Grid xs={12}>
-          <Form fetch={fetch} />
+           {/* <Form fetch={fetch} /> */}
+          
         </Grid>
         <Grid xs={12}>
           <Renderizar view={view} fetch={fetch} />

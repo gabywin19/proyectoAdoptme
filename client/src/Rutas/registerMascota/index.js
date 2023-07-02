@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from "universal-cookie";
 import { useFormik } from "formik";
 import validate from "./AdoptameValidaciones";
 import axios from "axios";
@@ -8,33 +9,41 @@ import InputsComponents from "./InputsComponents";
 import Response from "./Response";
 import PetSocial from "../../imagenes/PetSocial.png";
 
+const cookies = new Cookies();
+
 const MascotasRegister = () => {
   const [mascotas, setMascotas] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (valores) => {
-    setMascotas(false);
+    //setMascotas(false);
     setLoading(true);
-    const data = new FormData();
-
-   data.append('apodo', valores.apodo);
-   data.append('caracteristicas', valores.caracteristicas);
-   data.append('edad', valores.edad);
-   data.append('descripcionMascota', valores.descripcionMascota);
-   data.append('tipoAnimal', valores.tipoAnimal);
-   data.append('datosMedicos', valores.datosMedicos);
-   data.append('raza', valores.raza);
-   data.append('imagen1', valores.imagen1);
-   data.append('imagen2', valores.imagen2);
-   data.append('imagen3', valores.imagen3);
-   data.append('imagen4', valores.imagen4);
-   data.append('imagen5', valores.imagen5);
-   data.append('telefonoContacto', valores.telefonoContacto);
-   data.append('emailContacto', valores.emailContacto);
-   data.append('nombreContacto', valores.nombreContacto);
+   // const data = new FormData();
+    console.log(valores);
+  /*  data.append('apodo', valores.apodo);
+    data.append('caracteristicas', valores.caracteristicas);
+    data.append('edad', valores.edad);
+    data.append('descripcionMascota', valores.descripcionMascota);
+    data.append('tipoAnimal', valores.tipoAnimal);
+    data.append('datosMedicos', valores.datosMedicos);
+    data.append('raza', valores.raza);
+    data.append('imagen1', valores.imagen1);
+    data.append('imagen2', valores.imagen2);
+    data.append('imagen3', valores.imagen3);
+    data.append('imagen4', valores.imagen4);
+    data.append('imagen5', valores.imagen5);
+    data.append('telefonoContacto', valores.telefonoContacto);
+    data.append('emailContacto', valores.emailContacto);
+    data.append('nombreContacto', valores.nombreContacto);
+    data.append('userCreate', valores.userCreate);
+ 
+    console.log(data);
+  */    
     try {
-      await axios.post("http://localhost:8080/api/adoptame", data);
-      setMascotas(200);
+      await axios.post("http://localhost:8080/api/adoptame", valores).then((result) => {
+        setMascotas(200);
+      });
+      
     } catch (e) {
       console.log("Error", e);
       if (e?.response?.status === 400) {
@@ -63,6 +72,7 @@ const MascotasRegister = () => {
         telefonoContacto: "",
         emailContacto: "",
         nombreContacto: "",
+        userCreate: cookies.get("usuario"),
     },
     validate,
     onSubmit: handleSubmit,
@@ -79,7 +89,7 @@ const MascotasRegister = () => {
               </Grid>
               <Grid xs={12}>
               <Typography variant='h3' textAlign='center'>
-                Registrate
+                Registrar Mascota
               </Typography>
               </Grid>
              

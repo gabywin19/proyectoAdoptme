@@ -3,7 +3,7 @@ import { Route, Routes, Navigate, useMatches } from "react-router-dom";
 import Editar from './Rutas/editarPublicacion/Editar'
 import MascotasRegister from './Rutas/registerMascota'
 import Login from './Rutas/login';
-import Register from './Rutas/register'
+import Register from './Rutas/userRegister'
 import Header from './Rutas/inicio';
 import Inicio from './Components/Inicio';
 import EditarPerfil from './Rutas/editarUsuario/EditarPerfil'
@@ -49,9 +49,9 @@ const Root=() =>{
      
       <Routes>
         <Route path="/" element={
-          <AuthRequired>
+          
            <Header/>
-          </AuthRequired>
+          
         } />
 
         <Route path="/login" element={

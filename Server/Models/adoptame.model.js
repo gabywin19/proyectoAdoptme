@@ -16,6 +16,7 @@ const AdoptameSchema = new mongoose.Schema(
         telefonoContacto: { type: String, requerid: true},
         emailContacto: { type: String, requerid: true},
         nombreContacto: { type: String, requerid: true},
+        userCreate: { type: String, requerid: true},
 
 
     },

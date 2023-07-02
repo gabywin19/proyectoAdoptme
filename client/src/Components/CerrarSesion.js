@@ -3,17 +3,21 @@ import axios from 'axios';
 import { Button} from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import Cookies from "universal-cookie";
 
+const cookies = new Cookies();
 
 const CerrarSesion= ({ close }) => {
   const navigate = useNavigate();
   
   const deleteCookie = async() => {
     try {
-      await axios.post("http://localhost:7070/api/logout", {}, { withCredentials: true });
+      //await axios.post("http://localhost:7070/api/logout", {}, { withCredentials: true });
 
       close();
-      navigate('/login')
+      cookies.remove("usuario");
+      cookies.remove("token");
+      navigate('/')
     } catch (e) {
       console.log('Error', e);
     }

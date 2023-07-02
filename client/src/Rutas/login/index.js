@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from "universal-cookie";
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { Button, Paper, Link, Typography } from "@mui/material";
@@ -8,6 +9,8 @@ import validate from "./form.validate";
 import InputsComponents from "./InputsComponents";
 import Response from './Response';
 import PetSocial from '../../imagenes/PetSocial.png'
+
+const cookies = new Cookies();
 
 const Login = () => {
   const [login, setLogin] = useState(false);
@@ -19,12 +22,24 @@ const Login = () => {
     setLogin(false);
     setLoading(true);
     try {
-      await axios.post("http://localhost:7070/api/login", valores, {
+      await axios.post("http://localhost:8080/api/login", valores, {
         withCredentials: true
+      }).then((result) => {
+        setLogin(true);
+        // set the cookie
+        cookies.set("token", result.data.token, {
+          path: "/",
+        });
+        cookies.set("usuario", result.data.email, {
+          path: "/",
+        });
+        // redirect user to the auth page
+        setLogin(200)
+        navigate('/');
       });
-      setLogin(200);
+      //setLogin(200);
 
-      navigate('/');
+      //navigate('/');
     } catch (e) {
       console.log("Error", e);
       if (e?.response?.status === 403) {

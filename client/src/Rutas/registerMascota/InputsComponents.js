@@ -15,7 +15,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="apodo"
           label="Apodo"
           value={formik.values.apodo}
-          onChange={formik.apodo}
+          onChange={formik.handleChange}
           error={formik.touched.apodo && Boolean(formik.errors.apodo)}
           helperText={formik.touched.apodo && formik.errors.apodo}
         />
@@ -29,7 +29,8 @@ const InputsComponents = ({ formik, loading }) => {
           name="caracteristicas"
           label="Carácteristicas"
           value={formik.values.caracteristicas}
-          onChange={formik.caracteristicas}
+          onChange={formik.handleChange}
+
           error={formik.touched.caracteristicas && Boolean(formik.errors.caracteristicas)}
           helperText={formik.touched.caracteristicas && formik.errors.caracteristicas}
         />
@@ -42,7 +43,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="edad"
           label="Edad"
           value={formik.values.edad}
-          onChange={formik.edad}
+          onChange={formik.handleChange}
           error={formik.touched.edad && Boolean(formik.errors.edad)}
           helperText={formik.touched.edad && formik.errors.edad}
         />
@@ -55,7 +56,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="descripcionMascota"
           label="Descripción de la Mascota"
           value={formik.values.descripcionMascota}
-          onChange={formik.descripcionMascota}
+          onChange={formik.handleChange}
           error={formik.touched.descripcionMascota && Boolean(formik.errors.descripcionMascota)}
           helperText={formik.touched.descripcionMascota && formik.errors.descripcionMascota}
         />
@@ -68,7 +69,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="tipoAnimal"
           label="Tipo de Animal"
           value={formik.values.tipoAnimal}
-          onChange={formik.tipoAnimal}
+          onChange={formik.handleChange}
           error={formik.touched.tipoAnimal && Boolean(formik.errors.tipoAnimal)}
           helperText={formik.touched.tipoAnimal && formik.errors.tipoAnimal}
         />
@@ -81,7 +82,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="datosMedicos"
           label="Datos Medicos"
           value={formik.values.datosMedicos}
-          onChange={formik.datosMedicos}
+          onChange={formik.handleChange}
           error={formik.touched.datosMedicos && Boolean(formik.errors.datosMedicos)}
           helperText={formik.touched.datosMedicos && formik.errors.datosMedicos}
         />
@@ -94,7 +95,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="raza"
           label="Raza"
           value={formik.values.raza}
-          onChange={formik.raza}
+          onChange={formik.handleChange}
           error={formik.touched.raza && Boolean(formik.errors.raza)}
           helperText={formik.touched.raza && formik.errors.raza}
         />
@@ -107,7 +108,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="imagen1"
           label="Imagen 1"
           value={formik.values.imagen1}
-          onChange={formik.imagen1}
+          onChange={formik.handleChange}
           error={formik.touched.imagen1 && Boolean(formik.errors.imagen1)}
           helperText={formik.touched.imagen1 && formik.errors.imagen1}
         />
@@ -120,7 +121,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="imagen2"
           label="Imagen 2"
           value={formik.values.imagen2}
-          onChange={formik.imagen2}
+          onChange={formik.handleChange}
           error={formik.touched.imagen2 && Boolean(formik.errors.imagen2)}
           helperText={formik.touched.imagen2 && formik.errors.imagen2}
         />
@@ -133,7 +134,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="imagen3"
           label="Imagen 3"
           value={formik.values.imagen3}
-          onChange={formik.imagen3}
+          onChange={formik.handleChange}
           error={formik.touched.imagen3 && Boolean(formik.errors.imagen3)}
           helperText={formik.touched.imagen3 && formik.errors.imagen3}
         />
@@ -146,7 +147,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="imagen4"
           label="Imagen 4"
           value={formik.values.imagen4}
-          onChange={formik.imagen4}
+          onChange={formik.handleChange}
           error={formik.touched.imagen4 && Boolean(formik.errors.imagen4)}
           helperText={formik.touched.imagen4 && formik.errors.imagen4}
         />
@@ -159,7 +160,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="imagen5"
           label="Imagen 5"
           value={formik.values.imagen5}
-          onChange={formik.imagen5}
+          onChange={formik.handleChange}
           error={formik.touched.imagen5 && Boolean(formik.errors.imagen5)}
           helperText={formik.touched.imagen5 && formik.errors.imagen5}
         />
@@ -172,7 +173,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="telefonoContacto"
           label="Telefono del Contacto"
           value={formik.values.telefonoContacto}
-          onChange={formik.telefonoContacto}
+          onChange={formik.handleChange}
           error={formik.touched.telefonoContacto && Boolean(formik.errors.telefonoContacto)}
           helperText={formik.touched.telefonoContacto && formik.errors.telefonoContacto}
         />
@@ -185,7 +186,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="emailContacto"
           label="Email del Contacto"
           value={formik.values.emailContacto}
-          onChange={formik.emailContacto}
+          onChange={formik.handleChange}
           error={formik.touched.emailContacto && Boolean(formik.errors.emailContacto)}
           helperText={formik.touched.emailContacto && formik.errors.emailContacto}
         />
@@ -198,7 +199,7 @@ const InputsComponents = ({ formik, loading }) => {
           name="nombreContacto"
           label="Nombre del Contacto"
           value={formik.values.nombreContacto}
-          onChange={formik.nombreContacto}
+          onChange={formik.handleChange}
           error={formik.touched.nombreContacto && Boolean(formik.errors.nombreContacto)}
           helperText={formik.touched.nombreContacto && formik.errors.nombreContacto}
         />
