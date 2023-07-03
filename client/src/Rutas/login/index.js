@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import validate from "./form.validate";
 import InputsComponents from "./InputsComponents";
 import Response from './Response';
-import PetSocial from '../../imagenes/PetSocial.png'
+import adoptme from '../../imagenes/adoptme.png'
 
 const cookies = new Cookies();
 
@@ -66,7 +66,7 @@ const Login = () => {
         <Paper elevation={0} sx={{mt: 4, p: 4, width: 600, height:500}}>
           <form onSubmit={formik.handleSubmit} autoComplete="off" style={{height: '100%'}}>
             <Grid container flexDirection='column' justifyContent='space-between' spacing={2} style={{height: '100%'}}>
-              <Grid container justifyContent='center' alignItems='center'><img src={PetSocial} alt='Logo' width="400" height="80" /></Grid>
+              <Grid container justifyContent='center' alignItems='center'><img src={adoptme} alt='Logo' width="400" height="80" /></Grid>
               
               <Typography variant='h3' textAlign='center'>
                 Iniciar sesión

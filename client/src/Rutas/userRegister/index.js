@@ -7,7 +7,7 @@ import { Paper, Button , Typography} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import InputsComponents from "./InputsComponents";
 import Response from "./Response";
-import PetSocial from "../../imagenes/PetSocial.png";
+import adoptme from '../../imagenes/adoptme.png'
 
 const UserRegister = () => {
   const [user, setUser] = useState(false);
@@ -66,7 +66,7 @@ const UserRegister = () => {
           <form onSubmit={formik.handleSubmit} autoComplete="off">
             <Grid container spacing={2}>
               <Grid container justifyContent="center" alignItems="center" xs={12}>
-                <img src={PetSocial} alt="Logo" width="400" height="80" />
+                <img src={adoptme} alt="Logo" width="400" height="80" />
               </Grid>
               <Grid xs={12}>
               <Typography variant='h3' textAlign='center'>
