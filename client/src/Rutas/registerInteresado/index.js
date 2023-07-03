@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Cookies from "universal-cookie";
 import { useFormik } from "formik";
-import validate from "./AdoptameValidaciones";
+import validate from "./InteresadoValidaciones";
 import axios from "axios";
+import {useParams} from 'react-router-dom'
 import { Paper, Button , Typography} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import InputsComponents from "./InputsComponents";
@@ -12,8 +13,10 @@ import perroygato from "../../imagenes/perroygato.jpg";
 const cookies = new Cookies();
 
 const MascotasRegister = () => {
-  const [mascotas, setMascotas] = useState(false);
+  const [interesado, setInteresado] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  let { id } = useParams();
 
   const handleSubmit = async (valores) => {
     //setMascotas(false);
@@ -41,15 +44,15 @@ const MascotasRegister = () => {
   */    
     try {
       await axios.post("http://localhost:8080/api/adoptame", valores).then((result) => {
-        setMascotas(200);
+        setInteresado(200);
       });
       
     } catch (e) {
       console.log("Error", e);
       if (e?.response?.status === 400) {
-        setMascotas(400);
+        setInteresado(400);
       } else {
-        setMascotas(500);
+        setInteresado(500);
       }
     }
     setLoading(false);
@@ -57,22 +60,21 @@ const MascotasRegister = () => {
 
   const formik = useFormik({
     initialValues: {
-        apodo:"",
-        caracteristicas: "",
-        edad: "",
-        descripcionMascota: "",
-        tipoAnimal: "",
-        datosMedicos: "",
-        raza: "",
-        imagen1: "",
-        imagen2: "",
-        imagen3: "",
-        imagen4: "",
-        imagen5: "",
-        telefonoContacto: "",
-        emailContacto: "",
-        nombreContacto: "",
-        userCreate: cookies.get("usuario"),
+      adoptame_id: id,
+      nombre:"",
+      telefono: "",
+      comuna: "",
+      email: "",
+      edad: "",
+      ocupacion: "",
+      dondeVive: "",
+      tipoAnimal: "",
+      edadPreferencia: "",
+      esterilizar: "",
+      gastosVeterinario: "",
+      visitasSeguimiento: "",
+      pasearAdoptado: "",
+      userCreate: cookies.get("usuario"),
     },
     validate,
     onSubmit: handleSubmit,
@@ -85,25 +87,25 @@ const MascotasRegister = () => {
           <form onSubmit={formik.handleSubmit} autoComplete="off">
             <Grid container spacing={2}>
               <Grid container justifyContent="center" alignItems="center" xs={12}>
-              <img src={perroygato} alt="Logo" width="300" height="140" />
+                <img src={perroygato} alt="Logo" width="300" height="140" />
               </Grid>
               <Grid xs={12}>
               <Typography variant='h3' textAlign='center'>
-                Registrar Mascota
+               Persona Interesada
               </Typography>
               </Grid>
              
-              <InputsComponents formik={formik} mascotas={mascotas} />
+              <InputsComponents formik={formik} interesado={interesado} />
 
               <Grid>
                 <Grid container justifyContent="center" xs={12}>
                   <Button disabled={loading} type="submit" color="inherit">
-                    Registrar Mascota
+                    Registrar Interesado
                   </Button>
                 </Grid>
 
                
-                <Response mascotas={mascotas} />
+                <Response interesado={interesado} />
               </Grid>
             </Grid>
           </form>

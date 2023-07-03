@@ -4,7 +4,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { NavLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CerrarSesion from "./CerrarSesion";
-import PetSocial from "../imagenes/PetSocialRosa.png";
+import adoptmerosa from "../imagenes/adoptmerosa.png";
 import EditIcon from '@mui/icons-material/Edit';
 import HouseIcon from '@mui/icons-material/House';
 import PersonIcon from '@mui/icons-material/Person';
@@ -27,8 +27,8 @@ const Navbar = () => {
         </IconButton>
         </Box>
       
+        <Box sx={{ flexGrow: 1 }}><img src={adoptmerosa} alt="Logo" width="400" height="70" /></Box>
         
-        <img src={PetSocial} alt="Logo" width="270" height="50" />
       
       </Toolbar>
       <Drawer open={open} onClose={handleOpen}>

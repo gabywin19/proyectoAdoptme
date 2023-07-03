@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes, Navigate, useMatches } from "react-router-dom";
 import Editar from './Rutas/editarPublicacion/Editar'
 import MascotasRegister from './Rutas/registerMascota'
+import InteresadoRegister from './Rutas/registerInteresado'
 import Login from './Rutas/login';
 import Register from './Rutas/userRegister'
 import Header from './Rutas/inicio';
@@ -93,6 +94,12 @@ const Root=() =>{
         <Route path="/ver" element={
           <AuthRequired>
            <Ver/>
+          </AuthRequired>
+        } /> 
+
+        <Route path="/interesado/:id" element={
+          <AuthRequired>
+           <InteresadoRegister/>
           </AuthRequired>
         } /> 
       </Routes>
