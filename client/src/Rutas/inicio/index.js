@@ -11,9 +11,10 @@ const Index = () => {
   const fetch = async () => {
     setView([]);
     try {
-      const res = await axios.get("http://localhost:7070/api/publicaciones", { withCredentials: true });
+      const res = await axios.get("http://localhost:8080/api/publicaciones", { withCredentials: true });
 
       setView(res.data);
+      console.log(res.data[0].apodo);
     } catch (e) {
       console.log("Error", e);
       setView(null);

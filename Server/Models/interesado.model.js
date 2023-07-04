@@ -15,7 +15,7 @@ const InteresadoSchema = new mongoose.Schema(
         gastosVeterinario: { type: String, enum: ['SI', 'NO'],requerid: true},
         visitasSeguimiento: { type: String,enum: ['SI', 'NO'], requerid: true},
         pasearAdoptado: { type: String, enum: ['SI', 'NO'],requerid: true},
-        user_id : { type: String, requerid: true},
+        userCreate : { type: String, requerid: true},
 
     },
 

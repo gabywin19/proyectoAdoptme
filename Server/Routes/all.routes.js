@@ -11,7 +11,7 @@ module.exports = function (app) {
   app.get("/api/adoptame/:id", AdoptameController.getAdoptame);
   app.put("/api/adoptame/:id", AdoptameController.updateAdoptame);
   app.delete("/api/adoptame/:id", AdoptameController.deleteAdoptame);
-  app.get("/api/adoptame", AdoptameController.getAllAdoptame);
+  app.get("/api/publicaciones", AdoptameController.getAllAdoptame);
   
   app.post("/api/interesado", InteresadoController.createInteresado);
   app.get("/api/interesado", InteresadoController.getAllInteresado);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Typography,Box,Avatar,Menu,MenuItem,IconButton,Card,CardHeader,CardContent,CardActions,CardMedia,Collapse} from "@mui/material";
+import {Typography,Box,Avatar,Menu,MenuItem,IconButton,Card,CardHeader,CardContent,CardActions,CardMedia,Collapse, CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useNavigate, NavLink } from "react-router-dom";
 import CommentIcon from "@mui/icons-material/Comment";
@@ -7,6 +7,30 @@ import AddCommentIcon from '@mui/icons-material/AddComment';
 import Eliminar from "../inicio/Eliminar";
 import EliminarComentario from "../comentar/EliminarComentario";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Carousel from 'react-material-ui-carousel'
+import { Paper } from '@mui/material'
+
+const Item = ({item}) =>{
+  return (
+    <Paper  elevation={3} >
+      <Card sx={{ maxWidth: 600, maxHeight: 400 }}>
+      <CardActionArea >
+        <CardMedia
+          component="img"
+          height="100%"
+          
+          image={item.image}
+          alt={item.name}
+        />
+       
+      </CardActionArea>
+      </Card>
+
+        
+    </Paper>
+)
+
+}
 
 export const Post = ({ datos, refresh }) => {
   const [comentar, setComentar] = useState(false);
@@ -27,10 +51,17 @@ export const Post = ({ datos, refresh }) => {
   const handleComments = () => {
     setComentar((value) => !value);
   };
-  const ruta = datos.imagen?.path
-  const post = ruta?.split('\\').slice(-1)[0]
+  const ruta = datos.imagen1;
+  const post = ruta?.split('\\').slice(-1)[0];
+  const imagenes =[{name: "imagen1", image: datos.imagen1 },
+                   {name: "imagen2", image: datos.imagen2 },
+                   {name: "imagen3",image: datos.imagen3 },
+                   {name: "imagen4", image: datos.imagen4 },
+                   {name: "imagen5", image: datos.imagen5 },
+                   ];
+  const images = imagenes.filter(imagen => imagen.image !=="");                 
 
-  const ruta2 = datos.usuario?.imagen?.path
+  const ruta2 = datos.imagen1
   const avatar = ruta2?.split('\\').slice(-1)[0]
 
   return (
@@ -40,10 +71,10 @@ export const Post = ({ datos, refresh }) => {
         avatar={
           <Avatar
             sx={{ mr: 2 }}
-            src={`http://localhost:7070/${avatar}`}
-            alt={datos.usuario?.imagen?.originalname}
+            src={datos.imagen1}
+            alt={datos.apodo}
           >
-            {datos?.usuario?.petName[0]}
+            {datos.apodo}
           </Avatar>
         }
         action={
@@ -57,7 +88,7 @@ export const Post = ({ datos, refresh }) => {
             <MoreVertIcon />
           </IconButton>
         }
-        title={datos?.usuario?.petName}
+        title={datos?.apodo}
       />
       <CardContent>
         <Typography variant="body1">
@@ -65,15 +96,16 @@ export const Post = ({ datos, refresh }) => {
         </Typography>
       </CardContent>
       {post && (
-        <CardMedia
-          component={datos.imagen.mimetype === 'video/mp4' ? 'video' : "img"}
-          controls
-          height="auto"
-          sx={{objectFit:'contain',width:"100%",maxHeight:"90vh"}}
-          image={`http://localhost:7070/${post}`}
-          alt={datos.imagen.originalname}
-        />
+          
+          <Carousel>
+          {
+              images.map( (item, i) => <Item key={i} item={item} /> )
+          }
+          </Carousel>
+        
+       
       )}
+      
       <CardActions disableSpacing>
         <IconButton
           to={"/comentarios/" + datos._id}
@@ -96,7 +128,7 @@ export const Post = ({ datos, refresh }) => {
             <EliminarComentario id={item._id} refresh={refresh}/>
           </Typography>
         ))}
-        {!datos.comentarios.length && (
+        {!datos.length && (
           <Typography>No hay comentarios disponibles...</Typography>
         )}
         </CardContent>
@@ -125,6 +157,7 @@ const Renderizar = ({ view, fetch }) => {
 
   return (
     <>
+    {console.log(view.length)}
       {view?.length <= 0 && (
         <Box sx={{ mt: 4 }} textAlign="center">
            <Typography>No hay Publicación Para Mostrar</Typography>
