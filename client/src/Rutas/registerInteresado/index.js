@@ -8,6 +8,7 @@ import { Paper, Button , Typography} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import InputsComponents from "./InputsComponents";
 import Response from "./Response";
+
 import perroygato from "../../imagenes/perroygato.jpg";
 
 const cookies = new Cookies();
@@ -43,7 +44,7 @@ const MascotasRegister = () => {
     console.log(data);
   */    
     try {
-      await axios.post("http://localhost:8080/api/adoptame", valores).then((result) => {
+      await axios.post("http://localhost:8080/api/interesado", valores).then((result) => {
         setInteresado(200);
       });
       

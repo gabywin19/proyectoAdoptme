@@ -8,6 +8,9 @@ import adoptmerosa from "../imagenes/adoptmerosa.png";
 import EditIcon from '@mui/icons-material/Edit';
 import HouseIcon from '@mui/icons-material/House';
 import PersonIcon from '@mui/icons-material/Person';
+import InicarSesion from '@mui/icons-material/Login';
+
+
 
 
 
@@ -57,6 +60,11 @@ const Navbar = () => {
             <Grid textAlign='center' xs={12}>
               <Button onClick={handleOpen} to={'/registerMascota'} component={NavLink} color="inherit" >
                 Registrar Mascota
+              </Button>
+            </Grid>
+            <Grid textAlign='center' xs={12}>
+              <Button onClick={handleOpen} to={'/login'} component={NavLink} color="inherit" endIcon={<InicarSesion />}>
+                Login
               </Button>
             </Grid>
             <Grid textAlign='center' xs={12}>

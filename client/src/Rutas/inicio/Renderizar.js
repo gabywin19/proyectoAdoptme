@@ -13,7 +13,7 @@ import { Paper } from '@mui/material'
 const Item = ({item}) =>{
   return (
     <Paper  elevation={3} >
-      <Card sx={{ maxWidth: 600, maxHeight: 400 }}>
+      <Card sx={{ width: 600, height: 400 }}>
       <CardActionArea >
         <CardMedia
           component="img"
@@ -45,7 +45,7 @@ export const Post = ({ datos, refresh }) => {
 
   const navigate = useNavigate();
   const handleEdit = (id) => {
-    navigate(`/edit/${id}`);
+    navigate(`/interesado/${id}`);
   };
 
   const handleComments = () => {
@@ -142,8 +142,8 @@ export const Post = ({ datos, refresh }) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={() => handleEdit(datos._id)}>Editar</MenuItem>
-        <Eliminar id={datos._id} refresh={refresh} />
+        <MenuItem onClick={() => handleEdit(datos._id)}>Quiero Adoptar</MenuItem>
+        
       </Menu>
     </Card>
   );
