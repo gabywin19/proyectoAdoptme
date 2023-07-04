@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField} from "@mui/material";
+import { TextField,Select,MenuItem,InputLabel} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 const InputsComponents = ({ formik, loading }) => {
@@ -60,17 +60,22 @@ const InputsComponents = ({ formik, loading }) => {
         />
       </Grid>
       <Grid xs={12}>
-        <TextField
-          fullWidth
+        <InputLabel id="demo-simple-select-label">Edad</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
           disabled={loading}
           id="edad"
-          name="edad"
-          label="Edad"
+          name='edad'
           value={formik.values.edad}
+          label="Edad"
           onChange={formik.handleChange}
-          error={formik.touched.edad && Boolean(formik.errors.edad)}
-          helperText={formik.touched.edad && formik.errors.edad}
-        />
+        >
+          <MenuItem value=""></MenuItem>
+          <MenuItem value="CACHORRO">Menor a 2 Años</MenuItem>
+          <MenuItem value="ADOLESCENTE">Entre 2 a 5 Años</MenuItem>
+          <MenuItem value="ADULTO">Mayor a 5 Años</MenuItem>
+          
+        </Select>
       </Grid>
       <Grid xs={12}>
         <TextField
@@ -99,17 +104,20 @@ const InputsComponents = ({ formik, loading }) => {
         />
       </Grid>
       <Grid xs={12}>
-        <TextField
-          fullWidth
+        <InputLabel id="demo-simple-select-label">Tipo de Animal</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
           disabled={loading}
           id="tipoAnimal"
-          name="tipoAnimal"
-          label="Tipo de Animal"
+          name='tipoAnimal'
           value={formik.values.tipoAnimal}
+          label="Tipo de Animal"
           onChange={formik.handleChange}
-          error={formik.touched.tipoAnimal && Boolean(formik.errors.tipoAnimal)}
-          helperText={formik.touched.tipoAnimal && formik.errors.tipoAnimal}
-        />
+        >
+          <MenuItem value="PERRO">Perro</MenuItem>
+          <MenuItem value="GATO">Gato</MenuItem>
+          
+        </Select>
       </Grid>
       <Grid xs={12}>
         <TextField
@@ -125,56 +133,68 @@ const InputsComponents = ({ formik, loading }) => {
         />
       </Grid>
       <Grid xs={12}>
-        <TextField
-          fullWidth
+        <InputLabel id="demo-simple-select-label">Esterilizar</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
           disabled={loading}
           id="esterilizar"
-          name="esterilizar"
-          label="Esterilizar"
+          name='esterilizar'
           value={formik.values.esterilizar}
+          label="Esterilizar"
           onChange={formik.handleChange}
-          error={formik.touched.esterilizar && Boolean(formik.errors.esterilizar)}
-          helperText={formik.touched.esterilizar && formik.errors.esterilizar}
-        />
+        >
+          <MenuItem value="SI">Si</MenuItem>
+          <MenuItem value="NO">No</MenuItem>
+          
+        </Select>
       </Grid>
       <Grid xs={12}>
-        <TextField
-          fullWidth
+        <InputLabel id="demo-simple-select-label">Gastos Veterinario</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
           disabled={loading}
           id="gastosVeterinario"
-          name="gastosVeterinario"
-          label="Gastos Medicos"
+          name='gastosVeterinario'
           value={formik.values.gastosVeterinario}
+          label="Gastos Veterinario"
           onChange={formik.handleChange}
-          error={formik.touched.gastosVeterinario && Boolean(formik.errors.gastosVeterinario)}
-          helperText={formik.touched.gastosVeterinario && formik.errors.gastosVeterinario}
-        />
+        >
+          <MenuItem value="SI">Si</MenuItem>
+          <MenuItem value="NO">No</MenuItem>
+          
+        </Select>
       </Grid>
       <Grid xs={12}>
-        <TextField
-          fullWidth
+        <InputLabel id="demo-simple-select-label">Acepta Visitas</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
           disabled={loading}
           id="visitasSeguimiento"
-          name="visitasSeguimiento"
-          label="Visitas-Seguimiento"
+          name='visitasSeguimiento'
           value={formik.values.visitasSeguimiento}
+          label="Acepta Visitas"
           onChange={formik.handleChange}
-          error={formik.touched.visitasSeguimiento && Boolean(formik.errors.visitasSeguimiento)}
-          helperText={formik.touched.visitasSeguimiento && formik.errors.visitasSeguimiento}
-        />
+        >
+          <MenuItem value="SI">Si</MenuItem>
+          <MenuItem value="NO">No</MenuItem>
+          
+        </Select>
       </Grid>
       <Grid xs={12}>
-        <TextField
-          fullWidth
+        <InputLabel id="demo-simple-select-label">Pasear Adoptado</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
           disabled={loading}
           id="pasearAdoptado"
-          name="pasearAdoptado"
-          label="Pasear Adoptado"
+          name='pasearAdoptado'
           value={formik.values.pasearAdoptado}
+          label="Pasear Adoptado"
           onChange={formik.handleChange}
-          error={formik.touched.pasearAdoptado && Boolean(formik.errors.pasearAdoptado)}
-          helperText={formik.touched.pasearAdoptado && formik.errors.pasearAdoptado}
-        />
+        >
+          <MenuItem value="SI">Si</MenuItem>
+          <MenuItem value="NO">No</MenuItem>
+          
+        </Select>
       </Grid>
     
       

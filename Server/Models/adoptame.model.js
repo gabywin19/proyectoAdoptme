@@ -3,9 +3,9 @@ const AdoptameSchema = new mongoose.Schema(
     {
         apodo: { type: String, requerid: true},
         caracteristicas: { type: String, requerid: true},
-        edad: { type: String, requerid: true},
+        edad: { type: String,enum: ['CACHORRO', 'ADOLESCENTE','ADULTO'] ,requerid: true},
         descripcionMascota: { type: String, requerid: true},
-        tipoAnimal: { type: String, requerid: true},
+        tipoAnimal: { type: String, enum: ['PERRO', 'GATO'], requerid: true},
         datosMedicos: { type: String, requerid: true},
         raza: { type: String, requerid: true},
         imagen1: { type: String, requerid: true},

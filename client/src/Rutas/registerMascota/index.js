@@ -61,7 +61,7 @@ const MascotasRegister = () => {
         caracteristicas: "",
         edad: "",
         descripcionMascota: "",
-        tipoAnimal: "",
+        tipoAnimal: "PERRO",
         datosMedicos: "",
         raza: "",
         imagen1: "",
