@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Renderizar from "./Renderizar";
 import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import Form from "./Form";
 import axios from "axios";
 
 
