@@ -9,17 +9,15 @@ const cookies = new Cookies();
 const CerrarSesion= ({ close }) => {
   const navigate = useNavigate();
   
-  const deleteCookie = async() => {
-    try {
+  const deleteCookie = () => {
+    
       //await axios.post("http://localhost:7070/api/logout", {}, { withCredentials: true });
-
-      close();
       cookies.remove("usuario");
       cookies.remove("token");
+      close();
+     
       navigate('/')
-    } catch (e) {
-      console.log('Error', e);
-    }
+    
 
   };
   
