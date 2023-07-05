@@ -9,7 +9,7 @@ import Header from './Rutas/inicio';
 import Panel from './Rutas/panel/panel';
 import PanelInteresados from './Rutas/panel/ListInteresados';
 import Inicio from './Components/Inicio';
-import EditarPerfil from './Rutas/editarUsuario/EditarPerfil'
+import EditarPerfil from './Rutas/userEdit/EditarPerfil'
 import Comentar from './Rutas/comentar/Comentar'
 import Ver from './Rutas/verPerfil/Ver'
 

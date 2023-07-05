@@ -3,7 +3,7 @@ import axios from 'axios';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useFormik } from 'formik';
 import { Button, Box, Paper, } from '@mui/material';
-import InputsComponents from '../register/InputsComponents';
+import InputsComponents from '../userRegister/InputsComponents';
 import validate from './ValidacionesEditar'
 
 const FormEdit = ({editar}) => {
@@ -11,7 +11,7 @@ const FormEdit = ({editar}) => {
   
   const handleSubmit = async (valores) => {
     try {
-      const res = await axios.put('http://localhost:8080/api/usuario/'+ editar._id ,valores,{ withCredentials: true });
+      const res = await axios.put('http://localhost:8080/api/user/'+ editar._id ,valores,{ withCredentials: true });
 
       console.log(res.data.message);
       setFormularioEnviado(200);
@@ -47,7 +47,7 @@ const FormEdit = ({editar}) => {
 
                         {(formularioEnviado === 200) && (
                         <Grid xs={12} textAlign='center'>
-                            <Box color='success.main'>Pensamiento Actualizado</Box>
+                            <Box color='success.main'>Perfil Actualizado</Box>
                         </Grid>
                         )}
 

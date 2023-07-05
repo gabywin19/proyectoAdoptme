@@ -10,7 +10,7 @@ const EditarPerfil=()=>{
     useEffect(() => {
       const edit = async () => {
         try {
-          const res = await axios.get("http://localhost:7070/api/usuario", { withCredentials: true } );
+          const res = await axios.get("http://localhost:8080/api/user", { withCredentials: true } );
 
           setEditar(res.data);
         } catch (e) {

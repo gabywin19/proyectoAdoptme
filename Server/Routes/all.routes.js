@@ -29,6 +29,8 @@ module.exports = function (app) {
   app.post("/api/register", UserController.register);
   // login endpoint
   app.post("/api/login", UserController.login);
+  app.put("/api/user", UserController.update);
+  app.get("/api/user", UserController.get);
 
   // free endpoint
   //app.get("/free-endpoint", (request, response) => {
