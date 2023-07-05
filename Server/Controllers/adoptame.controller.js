@@ -5,7 +5,7 @@ module.exports.createAdoptame = (request, response) => {
         request.body;
 
     console.log(request.body);
-
+    const estado =  'INPROCESS'
     Adoptame.create ({
         apodo,
         caracteristicas,
@@ -23,6 +23,8 @@ module.exports.createAdoptame = (request, response) => {
         emailContacto,
         nombreContacto,
         userCreate,
+        estado,
+
     })
         .then((adoptame) => response.json(adoptame))
         .catch((err) => {
@@ -46,7 +48,7 @@ module.exports.createAdoptame = (request, response) => {
       
       };
       module.exports.getInProcess= (request, response) => {
-        Adoptame.find({ estado: 'INPROCESS' })
+        Adoptame.find({})
           .then((adoptame) => response.json(adoptame))
           .catch((err) => response.json(err));
     };
