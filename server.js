@@ -9,7 +9,7 @@ require("./Server/Config/mongoose.config");
 const cors = require('cors')
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://192.168.5.109:3000'],
+  origin: ['http://localhost:3000', 'http://192.168.5.109:3000'],
     credentials: true
 };
 

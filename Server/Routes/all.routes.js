@@ -7,7 +7,7 @@ const auth = require("../Config/auth");
 module.exports = function (app) {
 
   app.post("/api/adoptame",  AdoptameController.createAdoptame);
-
+  app.get("/api/adoptame/inprocess", AdoptameController.getInProcess);
   app.get("/api/adoptame/:id", AdoptameController.getAdoptame);
   app.get("/api/publicaciones", AdoptameController.getAllAdoptame);
 
