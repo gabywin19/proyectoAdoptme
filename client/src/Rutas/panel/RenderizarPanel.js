@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {Typography,Box,Avatar,Menu,MenuItem,IconButton,Card,CardHeader,CardContent,CardActions,CardMedia,Collapse, CardActionArea } from "@mui/material";
+import {Typography,Box,Card,CardMedia, CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useNavigate, NavLink } from "react-router-dom";
-import CommentIcon from "@mui/icons-material/Comment";
-import AddCommentIcon from '@mui/icons-material/AddComment';
-import Eliminar from "../inicio/Eliminar";
-import EliminarComentario from "../comentar/EliminarComentario";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Carousel from 'react-material-ui-carousel'
 import { Paper } from '@mui/material'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
