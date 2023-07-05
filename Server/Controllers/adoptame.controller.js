@@ -43,10 +43,10 @@ module.exports.createAdoptame = (request, response) => {
     module.exports.getAdoptame= (request, response) => {
         Adoptame.findOne({ _id: request.params.id })
           .then((adoptame) => response.json(adoptame))
-          .catch((err) => response.json(err));
-    };
-    module.exports.getInProcess= (request, response) => {
-        Adoptame.findOne({ estado: 'INPROCESS' })
+      
+      };
+      module.exports.getInProcess= (request, response) => {
+        Adoptame.find({ estado: 'INPROCESS' })
           .then((adoptame) => response.json(adoptame))
           .catch((err) => response.json(err));
     };

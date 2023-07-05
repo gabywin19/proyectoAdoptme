@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
-import {Typography,Box,Card,CardMedia, CardActionArea } from "@mui/material";
+import {Typography,Box,Avatar,Menu,MenuItem,IconButton,Card,CardHeader,CardContent,CardActions,CardMedia,Collapse, CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useNavigate, NavLink } from "react-router-dom";
+import CommentIcon from "@mui/icons-material/Comment";
+import AddCommentIcon from '@mui/icons-material/AddComment';
+import Eliminar from "../inicio/Eliminar";
+import EliminarComentario from "../comentar/EliminarComentario";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Carousel from 'react-material-ui-carousel'
 import { Paper } from '@mui/material'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -46,8 +52,9 @@ export const MascotasEnProceso = ({ datos, refresh }) => {
   };
 
   const navigate = useNavigate();
+  
   const handleEdit = (id) => {
-    navigate('/admin/interesados/'+id);
+    navigate('/interesados/'+ id);
   };
 
   const handleComments = () => {
@@ -86,8 +93,10 @@ export const MascotasEnProceso = ({ datos, refresh }) => {
     },
   }));
   
-  function createData(apodo, categoria, tipo, raza, contacto, id) {
-    return { apodo, categoria, tipo, raza, contacto,id};
+  function createData(nombre, telefono, email, edad, acupacion, dondevive, tipoanimal, 
+      edadpreferencia,  esterilizar, gastosveterinario, visitasseguimiento, pasearadoptado, id, adoptame_id) {
+    return { nombre, telefono, email, edad, acupacion, dondevive, tipoanimal, 
+      edadpreferencia,  esterilizar, gastosveterinario, visitasseguimiento, pasearadoptado, id, adoptame_id};
   }
 
 
@@ -95,10 +104,12 @@ let filas = []
   
   if(Array.isArray(datos)){
     datos.map((dato, id) => {
-      filas.push(createData(dato.apodo, dato.edad, dato.tipoAnimal, dato.raza, dato.nombreContacto, dato._id))
+      filas.push(createData(dato.nombre, dato.telefono, dato.email, dato.edad, dato.acupacion, dato.dondeVive, dato.tipoAnimal, 
+        dato.edadPreferencia,  dato.esterilizar, dato.gastosVeterinario, dato.visitasSeguimiento, dato.pasearAdoptado, dato._id, dato.adoptame_id))
     } )
   }else {
-    filas.push(createData(datos.apodo, datos.edad, datos.tipoAnimal, datos.raza, datos.nombreContacto,datos._id))
+    filas.push(createData(datos.nombre, datos.telefono, datos.email, datos.edad, datos.acupacion, datos.dondeVive, datos.tipoAnimal, 
+      datos.edadPreferencia,  datos.esterilizar, datos.gastosVeterinario, datos.visitasSeguimiento, datos.pasearAdoptado, datos._id, datos.adoptame_id))
   }
 
   console.log(filas);
@@ -111,27 +122,35 @@ let filas = []
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Apodo</StyledTableCell>
-            <StyledTableCell align="right">Rango Edad</StyledTableCell>
-            <StyledTableCell align="right">Tipo</StyledTableCell>
-            <StyledTableCell align="right">Raza</StyledTableCell>
-            <StyledTableCell align="right">Contacto</StyledTableCell>
-            <StyledTableCell align="right">Interesados</StyledTableCell>
+            <StyledTableCell>Email</StyledTableCell>
+            <StyledTableCell align="right">Telefono</StyledTableCell>
+            <StyledTableCell align="right">Nombre</StyledTableCell>
+            <StyledTableCell align="right">Ocupación</StyledTableCell>
+            <StyledTableCell align="right">Edad</StyledTableCell>
+            <StyledTableCell align="right">$ Esterilizar</StyledTableCell>
+            <StyledTableCell align="right">$ GastosVterinario</StyledTableCell>
+            <StyledTableCell align="right">Visitas Seguimiento</StyledTableCell>
+            <StyledTableCell align="right">Pasear Adoptado</StyledTableCell>
+            <StyledTableCell align="right">Adjudicar</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {filas.map((row, id) => (
             <StyledTableRow key={id}>
               <StyledTableCell component="th" scope="row">
-                {row.apodo}
+                {row.email}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.categoria}</StyledTableCell>
-              <StyledTableCell align="right">{row.tipo}</StyledTableCell>
-              <StyledTableCell align="right">{row.raza}</StyledTableCell>
-              <StyledTableCell align="right">{row.contacto}</StyledTableCell>
+              <StyledTableCell align="right">{row.telefono}</StyledTableCell>
+              <StyledTableCell align="right">{row.nombre}</StyledTableCell>
+              <StyledTableCell align="right">{row.ocupacion}</StyledTableCell>
+              <StyledTableCell align="right">{row.edad}</StyledTableCell>
+              <StyledTableCell align="right">{row.esterilizar}</StyledTableCell>
+              <StyledTableCell align="right">{row.gastosveterinario}</StyledTableCell>
+              <StyledTableCell align="right">{row.visitasseguimiento}</StyledTableCell>
+              <StyledTableCell align="right">{row.pasearadoptado}</StyledTableCell>
               <StyledTableCell align="right">
                             
-               <Button variant="outlined" onClick={() => handleEdit(row.id)}>Ver</Button>
+               <Button variant="outlined" onClick={() => handleEdit(row._id, row.adoptame_id)}>:-]</Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}

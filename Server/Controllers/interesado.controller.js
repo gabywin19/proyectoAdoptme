@@ -50,6 +50,13 @@ module.exports.getAllInteresado = (request, response) => {
     .then((interesado) => response.json(interesado))
     .catch((err) => response.json(err));
 };
+
+module.exports.getInteresadoEn = (request, response) => {
+  Interesado.find({adoptame_id : request.params.id})
+    .then((interesado) => response.json(interesado))
+    .catch((err) => response.json(err));
+};
+
 module.exports.getInteresado = (request, response) => {
   Interesado.findOne({ _id: request.params.id })
     .then((interesado) => response.json(interesado))

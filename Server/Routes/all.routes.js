@@ -13,6 +13,7 @@ module.exports = function (app) {
 
   app.post("/api/interesado", InteresadoController.createInteresado);
   app.get("/api/interesado", InteresadoController.getAllInteresado);
+  app.get("/api/losinteresados/:id", InteresadoController.getInteresadoEn);
   app.get("/api/interesado/:id", InteresadoController.getInteresado);
   app.put("/api/interesado/:id", InteresadoController.updateInteresado);
   app.delete("/api/interesado/:id", InteresadoController.deleteInteresado);
