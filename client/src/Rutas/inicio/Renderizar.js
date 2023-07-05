@@ -91,9 +91,10 @@ export const Post = ({ datos, refresh }) => {
         title={datos?.apodo}
       />
       <CardContent>
-        <Typography variant="body1">
-          {datos.pensamiento}
-        </Typography>
+   
+        <p>Descripción: {datos.descripcionMascota}</p>
+          
+   
       </CardContent>
       {post && (
           
@@ -102,10 +103,12 @@ export const Post = ({ datos, refresh }) => {
               images.map( (item, i) => <Item key={i} item={item} /> )
           }
           </Carousel>
-        
-       
+     
+                
       )}
-      
+                   <CardContent>
+                  
+                </CardContent>
       <CardActions disableSpacing>
         <IconButton
           to={"/comentarios/" + datos._id}

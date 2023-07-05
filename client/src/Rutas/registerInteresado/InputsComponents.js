@@ -59,23 +59,19 @@ const InputsComponents = ({ formik, loading }) => {
           helperText={formik.touched.email && formik.errors.email}
         />
       </Grid>
+
       <Grid xs={12}>
-        <InputLabel id="demo-simple-select-label">Edad</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
+        <TextField
+          fullWidth
           disabled={loading}
           id="edad"
-          name='edad'
-          value={formik.values.edad}
+          name="edad"
           label="Edad"
+          value={formik.values.edad}
           onChange={formik.handleChange}
-        >
-          <MenuItem value=""></MenuItem>
-          <MenuItem value="CACHORRO">Menor a 2 Años</MenuItem>
-          <MenuItem value="ADOLESCENTE">Entre 2 a 5 Años</MenuItem>
-          <MenuItem value="ADULTO">Mayor a 5 Años</MenuItem>
-          
-        </Select>
+          error={formik.touched.edad && Boolean(formik.errors.edad)}
+          helperText={formik.touched.edad && formik.errors.edad}
+        />
       </Grid>
       <Grid xs={12}>
         <TextField
@@ -119,18 +115,24 @@ const InputsComponents = ({ formik, loading }) => {
           
         </Select>
       </Grid>
+
       <Grid xs={12}>
-        <TextField
-          fullWidth
+        <InputLabel id="demo-simple-select-label">Edad de Preferencia</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
           disabled={loading}
           id="edadPreferencia"
-          name="edadPreferencia"
-          label="Preferencia de Edad"
+          name='edadPreferencia'
           value={formik.values.edadPreferencia}
+          label="Edad de Preferencia"
           onChange={formik.handleChange}
-          error={formik.touched.edadPreferencia && Boolean(formik.errors.edadPreferencia)}
-          helperText={formik.touched.edadPreferencia && formik.errors.edadPreferencia}
-        />
+        >
+          <MenuItem value=""></MenuItem>
+          <MenuItem value="CACHORRO">Menor a 2 Años</MenuItem>
+          <MenuItem value="ADOLESCENTE">Entre 2 a 5 Años</MenuItem>
+          <MenuItem value="ADULTO">Mayor a 5 Años</MenuItem>
+          
+        </Select>
       </Grid>
       <Grid xs={12}>
         <InputLabel id="demo-simple-select-label">Esterilizar</InputLabel>
