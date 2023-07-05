@@ -5,7 +5,7 @@ module.exports.createAdoptame = (request, response) => {
         request.body;
 
     console.log(request.body);
-    const estado = 'INPROCESS'
+
     Adoptame.create ({
         apodo,
         caracteristicas,
@@ -23,8 +23,6 @@ module.exports.createAdoptame = (request, response) => {
         emailContacto,
         nombreContacto,
         userCreate,
-        estado,
-
     })
         .then((adoptame) => response.json(adoptame))
         .catch((err) => {
@@ -37,32 +35,19 @@ module.exports.createAdoptame = (request, response) => {
     
     module.exports.getAllAdoptame = (request, response) => {
         Adoptame.find({})
-            .then((adoptame) => response.json(adoptame))
+            .then((adoptame) => {
+                response.json(adoptame.reverse())
+            })
             .catch((err) => response.json(err));
-    };
+   };
     module.exports.getAdoptame= (request, response) => {
         Adoptame.findOne({ _id: request.params.id })
           .then((adoptame) => response.json(adoptame))
-      
-      };
-      module.exports.getInProcess= (request, response) => {
+          .catch((err) => response.json(err));
+    };
+    module.exports.getInProcess= (request, response) => {
         Adoptame.findOne({ estado: 'INPROCESS' })
           .then((adoptame) => response.json(adoptame))
           .catch((err) => response.json(err));
-      };
-
-
-    module.exports.updateAdoptame = ( request, response) => {
-        console.log(request.body);
-        Adoptame.finOneAndUpdate ({ _id: request.params.id}, request.body, {
-    })
-        .then((updatedAdoptame) => response.json(updatedAdoptame))
-        .catch((err) => response.json(err));
-    };
-
-    module.exports.deleteAdoptame = (request, response) => {
-        Adoptame.deleteOne ({ _id: request.params.id })
-            .then((deleteConfirmation) => response.json(deleteConfirmation))
-            .catch((err) => response.json (err));
     };
     
