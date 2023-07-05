@@ -16,6 +16,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
 const Item = ({item}) =>{
   return (
@@ -52,7 +53,7 @@ export const MascotasEnProceso = ({ datos, refresh }) => {
 
   const navigate = useNavigate();
   const handleEdit = (id) => {
-    navigate(`/interesado/${id}`);
+    navigate('/admin/interesados/'+id);
   };
 
   const handleComments = () => {
@@ -91,27 +92,22 @@ export const MascotasEnProceso = ({ datos, refresh }) => {
     },
   }));
   
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+  function createData(apodo, categoria, tipo, raza, contacto, id) {
+    return { apodo, categoria, tipo, raza, contacto,id};
   }
 
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
 
 let filas = []
-
+  
   if(Array.isArray(datos)){
-    filas = datos.map((dato) => {
-      createData(dato.apodo, 159, 6.0, 24, 4.0)
+    datos.map((dato, id) => {
+      filas.push(createData(dato.apodo, dato.edad, dato.tipoAnimal, dato.raza, dato.nombreContacto, dato._id))
     } )
   }else {
-    filas =[createData(datos.apodo, datos.edad, datos.tipoAnimal, datos.raza, datos.nombreContacto)]
+    filas.push(createData(datos.apodo, datos.edad, datos.tipoAnimal, datos.raza, datos.nombreContacto,datos._id))
   }
+
+  console.log(filas);
   
 
 
@@ -122,22 +118,27 @@ let filas = []
         <TableHead>
           <TableRow>
             <StyledTableCell>Apodo</StyledTableCell>
-            <StyledTableCell align="right">Categoria</StyledTableCell>
+            <StyledTableCell align="right">Rango Edad</StyledTableCell>
             <StyledTableCell align="right">Tipo</StyledTableCell>
             <StyledTableCell align="right">Raza</StyledTableCell>
             <StyledTableCell align="right">Contacto</StyledTableCell>
+            <StyledTableCell align="right">Interesados</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {filas.map((row) => (
-            <StyledTableRow key={row.name}>
+          {filas.map((row, id) => (
+            <StyledTableRow key={id}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.apodo}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{row.categoria}</StyledTableCell>
+              <StyledTableCell align="right">{row.tipo}</StyledTableCell>
+              <StyledTableCell align="right">{row.raza}</StyledTableCell>
+              <StyledTableCell align="right">{row.contacto}</StyledTableCell>
+              <StyledTableCell align="right">
+                            
+               <Button variant="outlined" onClick={() => handleEdit(row.id)}>Ver</Button>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
@@ -175,17 +176,6 @@ const RenderizarPanel = ({ data, fetch }) => {
       </Grid>
       )}
  
-      {data.length > 1 && (
-          
-          data.map((datos, i) => {
-          return (
-            <Grid xs={12} key={i}>
-              <MascotasEnProceso  datos={datos} refresh={fetch} />
-            </Grid>
-          );
-        })
-      )}
-
       
       </Grid>
     </>

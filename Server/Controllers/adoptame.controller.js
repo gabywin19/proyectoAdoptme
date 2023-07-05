@@ -46,7 +46,7 @@ module.exports.createAdoptame = (request, response) => {
           .catch((err) => response.json(err));
       };
       module.exports.getInProcess= (request, response) => {
-        Adoptame.findOne({ estado: 'INPROCESS' })
+        Adoptame.find({ estado: 'INPROCESS' })
           .then((adoptame) => response.json(adoptame))
           .catch((err) => response.json(err));
       };

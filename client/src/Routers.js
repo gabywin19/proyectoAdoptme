@@ -7,6 +7,7 @@ import Login from './Rutas/login';
 import Register from './Rutas/userRegister'
 import Header from './Rutas/inicio';
 import Panel from './Rutas/panel/panel';
+import PanelInteresados from './Rutas/panel/ListInteresados';
 import Inicio from './Components/Inicio';
 import EditarPerfil from './Rutas/editarUsuario/EditarPerfil'
 import Comentar from './Rutas/comentar/Comentar'
@@ -108,6 +109,13 @@ const Root=() =>{
            <Panel/>
           </AuthRequired>
         } /> 
+           <Route path="/admin/interesados/:id" element={
+          <AuthRequired>
+           <PanelInteresados/>
+          </AuthRequired>
+        } /> 
+
+        
       </Routes>
     </>
   );
