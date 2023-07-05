@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const path = require('path')
+const cookieParser = require('cookie-parser')
 
 require("./Server/Config/mongoose.config");
 
@@ -13,6 +14,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions))
+app.use(cookieParser())
 
 /*
 app.use((req, res, next) => {

@@ -43,7 +43,7 @@ module.exports.createAdoptame = (request, response) => {
         Adoptame.findOne({ _id: request.params.id })
           .then((adoptame) => response.json(adoptame))
           .catch((err) => response.json(err));
-      };
+    };
 
     module.exports.updateAdoptame = ( request, response) => {
         console.log(request.body);

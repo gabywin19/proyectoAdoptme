@@ -93,3 +93,46 @@ module.exports.login = (req, res) => {
       });
     });
 };
+
+module.exports.update = async (req, res) => {
+  try {
+    const { userId } = await jwt.verify(req.cookies.token, process.env.SECRET_KEY);
+    const updateUsuario = await User.findOne({ _id: userId });
+    if (req.body.password && req.body.confirmPassword) {
+      updateUsuario.password = req.body.password;
+      updateUsuario.confirmPassword = req.body.confirmPassword;
+    } else {
+      updateUsuario.confirmPassword = updateUsuario.password;
+    }
+  
+    updateUsuario.email = req.body.email;
+    updateUsuario.userName = req.body.userName;
+  
+
+    await updateUsuario.save();
+    res.json({
+      message: "Se Actualizo El Perfil del Usuario",
+    });
+  } catch (error) {
+    res.status(500).json({
+      id: req.params.id,
+      message: "No Hemos Podido Actualizar el Perfil del Usuario",
+      error,
+    });
+  }
+};
+
+module.exports.get = async (req, res) => {
+  try {
+    const { userId } = jwt.verify(req.cookies.token, "RANDOM-TOKEN");
+    const oneUsuario = await User.findOne({ _id: userId });
+   
+    res.json(oneUsuario);
+  } catch (error) {
+    res.status(500).json({
+      id: req.params.id,
+      message: "No Hemos Podido Encontrar el Usuario",
+      error,
+    });
+  }
+};
