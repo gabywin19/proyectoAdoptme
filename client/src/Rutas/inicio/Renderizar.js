@@ -96,7 +96,7 @@ export const Post = ({ datos, refresh }) => {
       )}
 
       <CardActions disableSpacing>
-        <Tooltip title="Adoptar">
+ <Tooltip title="Adoptar">
           <IconButton onClick={() => handleEdit(datos._id)}>
            <HouseIcon />
           </IconButton>
